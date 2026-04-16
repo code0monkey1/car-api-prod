@@ -1,6 +1,19 @@
 using CarApi.Services;
 using Microsoft.OpenApi.Models;
 
+// Load environment variables from Render secret file
+if (File.Exists("/etc/secrets/.env.render"))
+{
+    var envFile = File.ReadAllText("/etc/secrets/.env.render");
+    foreach (var line in envFile.Split('\n', StringSplitOptions.RemoveEmptyEntries))
+    {
+        if (string.IsNullOrWhiteSpace(line) || line.StartsWith("#")) continue;
+        var parts = line.Split('=', 2);
+        if (parts.Length == 2)
+            Environment.SetEnvironmentVariable(parts[0], parts[1]);
+    }
+}
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container

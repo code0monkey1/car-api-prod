@@ -31,4 +31,8 @@ service-account.json
 ## Environment
 .env
 .env.local
+.env.render
 .dual-graph/
+
+## Credentials & Secrets
+RENDER_CREDENTIALS.md
