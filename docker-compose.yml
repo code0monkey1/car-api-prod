@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  carapi:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ENABLE_SWAGGER=true
+      - GoogleSheets__SpreadsheetId=${GOOGLE_SHEETS_SPREADSHEET_ID}
+      - GoogleSheets__CredentialsJson=${GOOGLE_SHEETS_CREDENTIALS_JSON}
+      - GoogleDrive__FolderId=${GOOGLE_DRIVE_FOLDER_ID}
+      - GoogleDrive__CredentialsJson=${GOOGLE_DRIVE_CREDENTIALS_JSON}
